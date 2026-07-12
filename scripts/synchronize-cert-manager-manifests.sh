@@ -11,6 +11,14 @@ MANIFESTS_DIRECTORY="$(dirname "$SCRIPT_DIRECTORY")"
 DESTINATION_DIRECTORY="$MANIFESTS_DIRECTORY/common/${COMPONENT_NAME}"
 DESTINATION_FILE="$DESTINATION_DIRECTORY/base/upstream/cert-manager.yaml"
 CHART_DIRECTORY="$DESTINATION_DIRECTORY/helm"
+HELM_HOME_DIRECTORY="$(mktemp -d)"
+cleanup() {
+  rm -rf "$HELM_HOME_DIRECTORY"
+}
+trap cleanup EXIT
+export HELM_CACHE_HOME="$HELM_HOME_DIRECTORY/cache"
+export HELM_CONFIG_HOME="$HELM_HOME_DIRECTORY/config"
+export HELM_DATA_HOME="$HELM_HOME_DIRECTORY/data"
 create_branch "$BRANCH_NAME"
 wget -O "$DESTINATION_FILE" \
   "https://github.com/${REPOSITORY_NAME}/releases/download/${COMMIT}/cert-manager.yaml"

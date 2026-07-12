@@ -7,10 +7,10 @@ keywords:
 - cert-manager
 - kubeflow
 - certificates
-home: https://github.com/kubeflow/manifests
+home: https://github.com/kubeflow/community-distribution
 sources:
 - https://cert-manager.io
-- https://github.com/kubeflow/manifests
+- https://github.com/kubeflow/community-distribution/tree/master/common/cert-manager
 dependencies:
 - name: cert-manager
   version: "1.20.2"
