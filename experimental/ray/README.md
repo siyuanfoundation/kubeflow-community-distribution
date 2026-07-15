@@ -86,9 +86,9 @@ kubectl get pod -l ray.io/cluster=kubeflow-raycluster -n $MY_KUBEFLOW_USER_NAMES
 #Check Raycluster headless service
 kubectl get svc -n $MY_KUBEFLOW_USER_NAMESPACE
 ```
-* `raycluster_example.yaml` uses `rayproject/ray:2.23.0-py311-cpu` as its OCI image. Ray is very sensitive to the Python versions and Ray versions between the server (RayCluster) and client (JupyterLab) sides. This image uses:
+* `raycluster_example.yaml` uses `rayproject/ray:2.56.0-py311-cpu` as its OCI image. Ray is very sensitive to the Python versions and Ray versions between the server (RayCluster) and client (JupyterLab) sides. This image uses:
     * Python 3.11
-    * Ray 2.23.0
+    * Ray 2.56.0
 
 ## Step 5: Forward the port of Istio's Ingress-Gateway
 * Follow the [instructions](https://github.com/kubeflow/community-distribution/tree/master#port-forward) to forward the port of Istio's Ingress-Gateway and log in to Kubeflow Central Dashboard.
@@ -106,7 +106,7 @@ kubectl get svc -n $MY_KUBEFLOW_USER_NAMESPACE
     # Check Python version. The version's MAJOR and MINOR should match with RayCluster (i.e. Python 3.11.9)
     python --version
     # Python 3.11.9
-    pip install -U ray[default]==2.23.0
+    pip install -U ray[default]==2.56.0
     ```
 * Connect to RayCluster via Ray client.
     ```python
