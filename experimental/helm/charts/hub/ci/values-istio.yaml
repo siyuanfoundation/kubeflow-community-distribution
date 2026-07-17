@@ -29,7 +29,11 @@ istio:
       - source:
           principals:
           - cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account
-    - when:
+    - from:
+      - source:
+          namespaces:
+          - "kubeflow"
+      when:
       - key: request.headers[authorization]
         values:
         - "*"
@@ -62,4 +66,4 @@ monitoring:
   
 storage:
   csi:
-    enabled: false 
+    enabled: false
