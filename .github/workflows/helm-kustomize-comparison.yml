@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
     - experimental/helm/charts/**
+    - applications/hub/**
     - applications/kserve/kserve-ui/**
     - common/cert-manager/**
     - common/kubeflow-namespace/**
     - common/kubeflow-roles/**
     - scripts/synchronize-cert-manager-manifests.sh
+    - scripts/synchronize-hub-manifests.sh
     - tests/kustomize_install.sh
     - tests/helm_kustomize_compare.py
     - tests/helm_kustomize_compare.sh

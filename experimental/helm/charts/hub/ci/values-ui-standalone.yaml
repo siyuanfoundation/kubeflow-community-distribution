@@ -9,7 +9,7 @@ ui:
 
   image:
     repository: ui
-    tag: "v0.3.12"
+    tag: "v0.3.14"
     pullPolicy: Always
 
   containerPort: 8080

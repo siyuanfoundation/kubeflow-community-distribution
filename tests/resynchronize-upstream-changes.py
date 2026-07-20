@@ -35,7 +35,11 @@ def find_upstream_scripts(changed_files: list[Path]) -> set[Path]:
     upstream_scripts = set()
     for changed in changed_files:
         for upstream_path, script in path_to_synchronization_script.items():
-            if upstream_path in changed.parents or changed == upstream_path:
+            if (
+                changed == script
+                or upstream_path in changed.parents
+                or changed == upstream_path
+            ):
                 upstream_scripts.add(script)
     return upstream_scripts
 
