@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: workspaces-frontend
+  namespace: kubeflow-workspaces
+spec:
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: workspaces-backend
+  namespace: kubeflow-workspaces
+spec:
+  trafficPolicy:
+    tls:
+      mode: DISABLE

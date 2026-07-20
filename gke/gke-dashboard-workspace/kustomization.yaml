@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../common/kubeflow-namespace/base
+- ../../common/istio/istio-crds/base
+- ../../common/istio/istio-namespace/base
+- ../../common/istio/istio-install/base
+- ../../common/istio/kubeflow-istio-resources/base
+- ../../common/kubeflow-roles/base
+- ../../applications/dashboard/overlays/istio
+- ../../applications/workspaces/overlays/istio
+- ../../common/user-namespace/base
+- envoy-filter.yaml
+
+components:
+- ../../applications/workspaces/components/centraldashboard
+
+patches:
+- path: patches/service-loadbalancer.yaml
+- path: patches/workspaces-destinationrules.yaml
+- path: patches/istio-sidecar-injector-gke.yaml
+- path: patches/istio-values-gke.yaml
+- patch: |-
+    $patch: delete
+    apiVersion: apps/v1
+    kind: DaemonSet
+    metadata:
+      name: istio-cni-node
+      namespace: kube-system

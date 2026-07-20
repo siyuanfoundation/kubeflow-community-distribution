@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: workspace-home-pvc
+  namespace: kubeflow-user-example-com
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard-rwo
+  resources:
+    requests:
+      storage: 5Gi

@@ -1,0 +1,14 @@
+apiVersion: kubeflow.org/v1beta1
+kind: Workspace
+metadata:
+  name: jupyter-ray-workspace
+  namespace: kubeflow-user-example-com
+spec:
+  paused: false
+  kind: "jupyterlab"
+  podTemplate:
+    volumes:
+      home: "workspace-home-pvc"
+    options:
+      imageConfig: "jupyter-custom"
+      podConfig: "small_cpu"
